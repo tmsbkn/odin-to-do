@@ -1,7 +1,7 @@
 {
-   "name": "webpack-template",
+   "name": "to-do",
    "version": "1.0.0",
-   "description": "A template repo for future webpack projects",
+   "description": "A to-do list application",
    "private": true,
    "devDependencies": {
       "css-loader": "^7.1.4",
@@ -21,14 +21,14 @@
    },
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/tmsbkn/webpack-template.git"
+      "url": "git+https://github.com/tmsbkn/odin-to-do.git"
    },
    "keywords": [],
    "author": "",
    "license": "ISC",
    "type": "module",
    "bugs": {
-      "url": "https://github.com/tmsbkn/webpack-template/issues"
+      "url": "https://github.com/tmsbkn/odin-to-do/issues"
    },
-   "homepage": "https://github.com/tmsbkn/webpack-template#readme"
+   "homepage": "https://github.com/tmsbkn/odin-to-do/#readme"
 }
