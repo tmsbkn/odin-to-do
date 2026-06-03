@@ -1,5 +1,6 @@
 import Project from './project';
 import Task from './task';
+import Storage from './storage';
 
 // App Function is what determines the logic that adds projects or changes the active project
 const App = (() => {
@@ -21,4 +22,39 @@ const App = (() => {
       Storage.save(projects);
       return project;
    };
+
+   const deleteProject = (id) => {
+      projects = projects.filter((projects) => projects.id !== id);
+      Storage.save(projects);
+   };
+
+   const addTask = (title, description, dueDate, priority) => {
+      const task = new Task(title, description, dueDate, priority);
+      getActiveProject().addTask(task);
+      Storage.save(projects);
+      return task;
+   };
+
+   const deleteTask = (taskID) => {
+      getActiveProject().removeTask(taskID);
+      Storage.save(projects);
+   };
+
+   const toggleTask = (taskID) => {
+      getActiveProject.getTask(taskID).toggleDone();
+      Storage.save(projects);
+   };
+
+   return {
+      getProjects,
+      getActiveProject,
+      setActiveProject,
+      addProject,
+      deleteProject,
+      addTask,
+      deleteTask,
+      toggleTask,
+   };
 })();
+
+export default App;
