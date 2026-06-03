@@ -4,12 +4,10 @@ class Task {
       this.description = description;
       this.dueDate = dueDate;
       this.priority = priority;
+      this.done = false;
+      this.id = crypto.randomUUID();
    }
-}
-
-class Project {
-   constructor(title) {
-      this.title = title;
-      this.tasks = [];
+   toggleDone() {
+      this.done = !this.done;
    }
 }
