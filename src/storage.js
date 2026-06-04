@@ -1,5 +1,5 @@
-import Project from './project';
-import Task from './task';
+import Project from './project.js';
+import Task from './task.js';
 
 const Storage = (() => {
    const save = (projects) => {
