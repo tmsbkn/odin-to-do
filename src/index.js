@@ -1,6 +1,6 @@
 import './styles.css';
 import './reset.css';
-import './initDOM.js';
-import initDOM from './initDOM.js';
+import UI from './UI.js';
+
 // initialize DOM
-initDOM();
+UI.init();
