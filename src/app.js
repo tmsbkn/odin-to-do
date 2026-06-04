@@ -9,8 +9,7 @@ const App = (() => {
 
    const getProjects = () => projects;
 
-   const getActiveProject = () =>
-      projects.find((project) => projects.id === activeProjectID);
+   const getActiveProject = () => projects.find((p) => p.id === activeProjectID);
 
    const setActiveProject = (id) => {
       activeProjectID = id;
