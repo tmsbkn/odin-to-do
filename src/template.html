@@ -3,13 +3,34 @@
    <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
+      <title>To Do List</title>
+      <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
    </head>
    <body>
-      <header><h1>Hello World!</h1></header>
-      <main>
-         <div id="content"></div>
-      </main>
+      <div id="app">
+         <aside>
+            <div id="project-list"></div>
+            <button id="btn-add-project">+ Project</button>
+         </aside>
+         <main>
+            <h2 id="project-title"></h2>
+            <div id="task-list"></div>
+            <button id="btn-add-task">+ Add Task</button>
+         </main>
+      </div>
       <footer></footer>
+      <div id="task-modal" class="hidden">
+         <form id="task-form">
+            <input id="task-title" type="text" placeholder="Title" required />
+            <textarea id="task-desc" placeholder="Description"></textarea>
+            <input type="date" id="task-due" />
+            <select id="task-priority">
+               <option value="low">Low</option>
+               <option value="medium">Medium</option>
+               <option value="high">High</option>
+            </select>
+            <button type="submit">Add</button>
+         </form>
+      </div>
    </body>
 </html>
