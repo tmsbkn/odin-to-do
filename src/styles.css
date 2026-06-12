@@ -1,3 +1,11 @@
 :root{
     font-family: system-ui;
 }
+#app{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.hidden{
+    display: none;
+}
