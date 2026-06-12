@@ -1,11 +1,86 @@
 :root{
     font-family: system-ui;
 }
+body{
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
 #app{
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: clamp(20ch, 20vw, 30ch) 1fr;
+}
+#app>aside{
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1em;
+}
+main{
+    padding: 2rem;
+}
+#project-title{
+    inline-size: 50%;
+    margin-bottom: 1em;
+}
+#task-list{
+    display: grid;
+    width: min(500px, 100%);
+    gap: 0.125em;
+    margin-bottom: 1em;
+}
+.task-item{
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 1em;
+    align-items: center;
+
+}
+.task-due::before{
+    content:"Due "
+}
+#project-list{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    & span{
+        display: flex;
+        justify-content: space-between;
+        cursor: default;
+        & button{
+            background: WHITE;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+            border-radius: 100vw;
+            outline: transparent;
+            border: transparent;
+            font-weight: normal;
+        }
+    }
+}
+.active{
+    font-weight: bold;
 }
 
-.hidden{
+#task-modal{
+    position: absolute;
+    height: 100svh;
+    width: 100svw;
+    backdrop-filter: blur(2px) brightness(0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#task-form{
+    display: grid;
+    gap: 0.25em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+#task-modal.hidden{
     display: none;
 }
