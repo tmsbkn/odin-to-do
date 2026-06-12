@@ -1,5 +1,9 @@
 :root{
     font-family: system-ui;
+    --color-accent: skyblue;
+    --color-bg: color-mix(in lch, contrast-color(var(--color-accent)), var(--color-accent) 20%);
+    --color-text: contrast-color(var(--color-bg));
+    --color-btn: color-mix(in srgb, var(--color-bg), var(--color-accent) 40%);
 }
 body{
     min-height: 100svh;
@@ -9,19 +13,25 @@ body{
 #app{
     display: grid;
     grid-template-columns: clamp(20ch, 20vw, 30ch) 1fr;
+    @media only screen and (max-width: 600px){
+     grid-template-columns: 1fr; 
+     grid-template-rows: auto 1fr;  
+    }
 }
 #app>aside{
-    background-color: #eee;
+    background-color: var(--color-btn);
+    color: var(--color-text);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 1em;
 }
 main{
-    padding: 2rem;
+    color: var(--color-text);
+    padding: min(3vw, 2rem);
+    background-color: var(--color-bg);
 }
 #project-title{
-    inline-size: 50%;
     margin-bottom: 1em;
 }
 #task-list{
@@ -32,10 +42,13 @@ main{
 }
 .task-item{
     display: grid;
-    grid-template-columns: auto 1fr auto auto;
-    gap: 1em;
+    grid-template-columns: auto 1fr auto;
+    gap: min(1em, 2vw);
     align-items: start;
 
+}
+#project-title{
+    color: var(--color-accent)
 }
 .task-item>input{
     width: 1.25rem;
@@ -90,16 +103,23 @@ main{
 .task-item>div{
     display: grid;
     grid-template-columns: 1fr auto;
+    @media only screen and (max-width: 600px){
+        grid-template-columns: 1fr;
+        & .task-desc{
+            grid-column: span 1;
+        }
+    }
 }
 .task-title{
     font-size: 1.125rem;
 }
 .task-desc{
-    color: #222;
+    color: color-mix(in srgb, var(--color-text) 80%, gray);
     grid-column: span 2;
 }
 #task-modal{
     position: absolute;
+    
     height: 100svh;
     width: 100svw;
     backdrop-filter: blur(2px) brightness(0.8);
@@ -110,27 +130,39 @@ main{
 }
 #task-form{
     display: grid;
-    gap: 0.25em;
-    background-color: white;
+    gap: 0.75em;
+    background-color: var(--color-btn);
     padding: 1em;
     border-radius: 1em;
+    & input, select, textarea{
+        border-radius: 4px;
+        padding: 8px;
+        background-color: color-mix(var(--color-btn), var(--color-accent) 30%);
+        border: transparent;
+        color: contrast-color(var(--color-bg));
+        &&:focus{
+            outline: dotted 2px var(--color-accent);
+        }
+    }
 }
 
 #task-modal.hidden{
     display: none;
 }
-
+input:checked{
+    accent-color: var(--color-accent);
+}
 #btn-add-task, #btn-add-project, #task-form>button{
     margin-top: 1rem;
     border: none;
-    background-color: lightgray;
-    color: contrast-color(gray);
+    background-color: var(--color-btn);
+    color: contrast-color(var(--color-btn));
     border-radius: 100vw;
     padding: 0.25em 0.75em;
     font-weight: bold;
     transition: background-color 300ms, color 300ms;
     &&:hover{
-        background-color: rebeccapurple;
-        color: contrast-color(rebeccapurple);
+        background-color: var(--color-accent);
+        color: contrast-color(var(--color-accent));
     }
 }
