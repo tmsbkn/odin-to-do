@@ -24,7 +24,34 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 2rem;
     padding: 1em;
+}
+#lower-nav{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    &>div{
+        display: flex;
+        gap:1ch;
+        align-items: center;
+    }
+}
+
+input[type="color" i]{
+    border-radius: 50%;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    padding: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(153, 153, 153);
+    &&::-webkit-color-swatch {
+      border-radius: 50%;
+    }
+    &&::-moz-color-swatch {
+      border-radius: 50%;
+    }
 }
 main{
     color: var(--color-text);
@@ -153,7 +180,6 @@ input:checked{
     accent-color: var(--color-accent);
 }
 #btn-add-task, #btn-add-project, #task-form>button{
-    margin-top: 1rem;
     border: none;
     background-color: var(--color-btn);
     color: contrast-color(var(--color-btn));
