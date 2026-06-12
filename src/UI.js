@@ -73,15 +73,15 @@ const UI = (() => {
       renderSidebar();
       renderTasks();
    };
-
+   const changeAccentColor = (e) => {
+      const root = document.querySelector(':root');
+      root.style.setProperty('--color-accent', e.target.value);
+   };
    const bindEvents = () => {
       //Accent Colour Picker
-      document
-         .querySelector('#accentColorPicker')
-         .addEventListener('change', (e) => {
-            const root = document.querySelector(':root');
-            root.style.setProperty('--color-accent', e.target.value);
-         });
+      const colorPicker = document.querySelector('#accentColorPicker');
+      colorPicker.addEventListener('change', changeAccentColor);
+      colorPicker.addEventListener('input', changeAccentColor);
 
       // Add Project
       document.querySelector('#btn-add-project').addEventListener('click', () => {
