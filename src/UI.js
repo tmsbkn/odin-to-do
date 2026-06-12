@@ -16,7 +16,7 @@ const UI = (() => {
          deleteBtn.textContent = 'x';
          deleteBtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            if (App.getProjects().length === 1);
+            if (App.getProjects().length === 1) return;
             App.deleteProject(project.id);
             render();
          });
@@ -45,9 +45,12 @@ const UI = (() => {
 
          div.innerHTML = `
          <input type="checkbox" ${task.done ? 'checked' : ''}>
+         <div>
          <span class="task-title">${task.title}</span>
          <span class="task-due">${task.dueDate}</span>
-         <button class="btn-delete-task">x</button>
+         <span class="task-desc">${task.description}</span>
+         </div>
+         <button class="btn-delete-task">X</button>
          `;
 
          div.querySelector('input[type="checkbox"]').addEventListener(
