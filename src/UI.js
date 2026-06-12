@@ -75,6 +75,14 @@ const UI = (() => {
    };
 
    const bindEvents = () => {
+      //Accent Colour Picker
+      document
+         .querySelector('#accentColorPicker')
+         .addEventListener('change', (e) => {
+            const root = document.querySelector(':root');
+            root.style.setProperty('--color-accent', e.target.value);
+         });
+
       // Add Project
       document.querySelector('#btn-add-project').addEventListener('click', () => {
          const name = prompt('Project Name:');
