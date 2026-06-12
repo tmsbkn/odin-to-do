@@ -26,16 +26,21 @@ main{
 }
 #task-list{
     display: grid;
-    width: min(500px, 100%);
-    gap: 0.125em;
+    width: min(64ch, 100%);
+    gap: 1em;
     margin-bottom: 1em;
 }
 .task-item{
     display: grid;
     grid-template-columns: auto 1fr auto auto;
     gap: 1em;
-    align-items: center;
+    align-items: start;
 
+}
+.task-item>input{
+    width: 1.25rem;
+    margin-top: 3px;
+    aspect-ratio: 1 /1;
 }
 .task-due::before{
     content:"Due "
@@ -49,6 +54,7 @@ main{
         justify-content: space-between;
         cursor: default;
         & button{
+            opacity: 0;
             background: WHITE;
             cursor: pointer;
             aspect-ratio: 1 / 1;
@@ -56,13 +62,42 @@ main{
             outline: transparent;
             border: transparent;
             font-weight: normal;
+            transition: opacity 300ms;
         }
     }
+}
+
+#project-list>span:hover button{
+    opacity: 1;
 }
 .active{
     font-weight: bold;
 }
+.btn-delete-task{
+    display: inline;
+    opacity: 0;
+    background-color: transparent;
+    font-weight: bold;
+    border: transparent;
+    color: red;
+    transition: opacity 300ms;
+}
+.task-item:hover .btn-delete-task{
+    opacity: 100%;
+    cursor: pointer;
+}
 
+.task-item>div{
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+.task-title{
+    font-size: 1.125rem;
+}
+.task-desc{
+    color: #222;
+    grid-column: span 2;
+}
 #task-modal{
     position: absolute;
     height: 100svh;
@@ -83,4 +118,19 @@ main{
 
 #task-modal.hidden{
     display: none;
+}
+
+#btn-add-task, #btn-add-project, #task-form>button{
+    margin-top: 1rem;
+    border: none;
+    background-color: lightgray;
+    color: contrast-color(gray);
+    border-radius: 100vw;
+    padding: 0.25em 0.75em;
+    font-weight: bold;
+    transition: background-color 300ms, color 300ms;
+    &&:hover{
+        background-color: rebeccapurple;
+        color: contrast-color(rebeccapurple);
+    }
 }
