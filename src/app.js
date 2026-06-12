@@ -24,6 +24,7 @@ const App = (() => {
 
    const deleteProject = (id) => {
       projects = projects.filter((projects) => projects.id !== id);
+      if (activeProjectID === id) activeProjectID = projects[0].id;
       Storage.save(projects);
    };
 
@@ -40,7 +41,7 @@ const App = (() => {
    };
 
    const toggleTask = (taskID) => {
-      getActiveProject.getTask(taskID).toggleDone();
+      getActiveProject().getTask(taskID).toggleDone();
       Storage.save(projects);
    };
 
