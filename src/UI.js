@@ -82,6 +82,7 @@ const UI = (() => {
       const colorPicker = document.querySelector('#accentColorPicker');
       colorPicker.addEventListener('change', changeAccentColor);
       colorPicker.addEventListener('input', changeAccentColor);
+      colorPicker.addEventListener('blur', changeAccentColor);
 
       // Add Project
       document.querySelector('#btn-add-project').addEventListener('click', () => {
